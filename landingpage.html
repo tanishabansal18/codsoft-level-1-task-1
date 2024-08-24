@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Hub - Your Financial Partner</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Reset some default styles */
+        body, h1, h2, h3, p, ul, li, form {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.8;
+            color: #f0f0f0;
+            background-color: #1a1a1a;
+            scroll-behavior: smooth;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #000;
+            color: #f0f0f0;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        .container {
+            width: 85%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #aaa;
+        }
+
+        /* Hero section styles */
+        .hero-section {
+            background: url('https://th.bing.com/th/id/OIP.3TRff_eSI80fCZiUVKZikwHaEK?w=321&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7') no-repeat center center/cover;
+            color: #f0f0f0;
+            text-align: center;
+            padding: 150px 0;
+            position: relative;
+            margin-top: 80px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero-section:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-section h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            color: #f0f0f0;
+            animation: slideInDown 1s ease-in-out;
+        }
+
+        .hero-section p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+            color: #ccc;
+            animation: slideInUp 1s ease-in-out;
+        }
+
+        .hero-section .cta-button {
+            background-color: #333;
+            color: #f0f0f0;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 50px;
+            position: relative;
+            z-index: 1;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-section .cta-button:hover {
+            background-color: #444;
+        }
+
+        
+
+        /* Main section styles */
+        main {
+            padding: 40px 0;
+            margin-top: 80px; /* Adjust for fixed header */
+        }
+
+        .main-section {
+            background-color: #2a2a2a;
+            padding: 60px 0;
+        }
+
+        .main-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #f0f0f0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .main-section p {
+            font-size: 1.2em;
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .image-gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .image-item {
+            flex: 1 1 calc(30% - 40px); /* Three images in a row with some spacing */
+            margin: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-item img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .image-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .image-item p {
+            margin-top: 15px;
+            font-size: 1.2em;
+            color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        /* Services section styles */
+        .services-section {
+            background-color: #1a1a1a;
+            padding: 70px 0;
+        }
+
+        .services-section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5em;
+            color: #f0f0f0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .service {
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            border-bottom: 1px solid #333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 10px;
+            background-color: #222;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .service:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-icon {
+            flex: 0 0 80px;
+            margin-right: 20px;
+        }
+
+        .service-icon img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-description {
+            flex: 1;
+        }
+
+        .service-description h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #f0f0f0;
+        }
+
+        .service-description p {
+            font-size: 1.1em;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Testimonials section */
+        .testimonials-section {
+            background-color: #333;
+            padding: 60px 0;
+        }
+
+        .testimonials-section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #f0f0f0;
+            margin-bottom: 50px;
+        }
+
+        .testimonials {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .testimonial {
+            flex: 1 1 calc(30% - 40px);
+            background-color: #444;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+            color: #f0f0f0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .testimonial p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .testimonial h3 {
+            font-size: 1.4em;
+            text-align: right;
+        }
+
+        /* Blog section */
+        .blog-section {
+            background-color: #1a1a1a;
+            padding: 70px 0;
+        }
+
+        .blog-section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #f0f0f0;
+            margin-bottom: 50px;
+        }
+
+        .blog-post {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .blog-post img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #333;
+        }
+
+        .blog-post-content {
+            padding: 20px;
+            background-color: #222;
+            color: #f0f0f0;
+        }
+
+        .blog-post-content h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .blog-post-content p {
+            font-size: 1.1em;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Contact section styles */
+        .contact-section {
+            background-color: #2a2a2a;
+            padding: 70px 0;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #f0f0f0;
+            margin-bottom: 50px;
+        }
+
+        .contact-section .contact-form {
+            width: 80%;
+            margin: 0 auto;
+            max-width: 600px;
+            background-color: #333;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-section .contact-form label {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #f0f0f0;
+        }
+
+        .contact-section .contact-form input,
+        .contact-section .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1em;
+            color: #1a1a1a;
+        }
+
+        .contact-section .contact-form input[type="submit"] {
+            background-color: #555;
+            color: #f0f0f0;
+            padding: 15px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-section .contact-form input[type="submit"]:hover {
+            background-color: #666;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #000;
+            color: #f0f0f0;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        footer ul li {
+            margin: 0 15px;
+        }
+
+        footer ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        footer ul li a:hover {
+            color: #aaa;
+        }
+
+        footer p {
+            font-size: 1em;
+            margin-top: 20px;
+            color: #ccc;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .site-title {
+                margin-bottom: 15px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .image-item {
+                flex: 1 1 100%;
+            }
+
+            .service {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .service-icon {
+                margin-bottom: 20px;
+            }
+
+            .testimonials {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .testimonial {
+                flex: 1 1 100%;
+            }
+
+            .blog-post {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="site-title">Finance Hub</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Empower Your Financial Future</h1>
+            <p>Your journey to financial freedom starts here.</p>
+            <a href="#about" class="cta-button">Learn More</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="main-section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Finance Hub is your trusted partner in financial planning and investment. We help you achieve your financial goals with confidence.</p>
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="https://th.bing.com/th/id/OIP.QcQbyKwF_CGHn24_3ebBWAHaEu?w=282&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Financial Planning">
+                    <p>Financial Planning</p>
+                </div>
+                <div class="image-item">
+                    <img src="https://th.bing.com/th/id/OIP.VF6bA2-dXAWb7v16SEdQaQHaEk?w=263&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"/> <p>Investment Management</p>
+                </div>
+                <div class="image-item">
+                    <img src="https://th.bing.com/th/id/OIP.G2V6ANt7lvK6x2IfPJGTPgHaD4?w=326&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Retirement Planning">
+                    <p>Retirement Planning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service">
+                <div class="service-icon">
+                    <img src="https://th.bing.com/th/id/OIP.2wYLmCAe9dLpCQKNcBv5FgHaE7?w=242&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"/>
+                </div>
+                <div class="service-description">
+                    <h3>Personal Financial Planning</h3>
+                    <p>We offer personalized financial planning services to help you manage your finances and achieve your goals.</p>
+                </div>
+            </div>
+            <div class="service">
+                <div class="service-icon">
+                    <img src="https://th.bing.com/th/id/OIP.gSAeJ8akoggq5m4H7LHvBQHaEK?w=291&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Service Icon">
+                </div>
+                <div class="service-description">
+                    <h3>Investment Management</h3>
+                    <p>Our experts manage your investments to maximize returns and minimize risks.</p>
+                </div>
+            </div>
+            <div class="service">
+                <div class="service-icon">
+                    <img src="https://th.bing.com/th/id/OIP.-XMgXfAu8T7uqn0P4eC_yAAAAA?w=246&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Service Icon">
+                </div>
+                <div class="service-description">
+                    <h3>Retirement Planning</h3>
+                    <p>Plan for a comfortable retirement with our comprehensive retirement planning services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p>Finance Hub helped me secure my financial future. Their team is knowledgeable and always ready to assist.</p>
+                    <h3>- John Doe</h3>
+                </div>
+                <div class="testimonial">
+                    <p>Their investment strategies are top-notch. I've seen significant growth in my portfolio since working with them.</p>
+                    <h3>- Jane Smith</h3>
+                </div>
+                <div class="testimonial">
+                    <p>Thanks to Finance Hub, I'm confident in my retirement plan. They made the entire process easy and stress-free.</p>
+                    <h3>- Mark Johnson</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog-section">
+        <div class="container">
+            <h2>Latest Articles</h2>
+            <div class="blog-post">
+                <img src="https://th.bing.com/th/id/OIP.RlBr6J1mSnndXAKin0NFmgHaE8?w=265&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Blog Post Image">
+                <div class="blog-post-content">
+                    <h3>5 Tips for Effective Financial Planning</h3>
+                    <p>Discover the top strategies to help you plan your finances effectively and achieve your financial goals.</p>
+                </div>
+            </div>
+            <div class="blog-post">
+                <img src="https://th.bing.com/th/id/OIP.Ai3JqxxorUXlMbVHo471VQHaEK?w=324&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Blog Post Image">
+                <div class="blog-post-content">
+                    <h3>Understanding Investment Risks</h3>
+                    <p>Learn how to assess and manage risks in your investment portfolio for better long-term returns.</p>
+                </div>
+            </div>
+            <div class="blog-post">
+                <img src="https://th.bing.com/th/id/OIP.pJn716B2-f_kwBbiOkcetAAAAA?w=297&h=189&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Blog Post Image">
+                <div class="blog-post-content">
+                    <h3>Planning for Retirement: What You Need to Know</h3>
+                    <p>Get insights into creating a retirement plan that ensures financial security and peace of mind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form class="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <input type="submit" value="Send Message">
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <p>&copy; 2024 Finance Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>
